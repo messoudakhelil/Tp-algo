@@ -1,0 +1,88 @@
+#include <stdio.h>
+
+int main() {
+
+    int A[] = {2, 4, 6, 8, 10, 12, 14};
+    int n = 7;
+    int x = 12;
+
+    int i;
+    int found;
+
+    // =========================
+    // 1. Linear Search
+    // =========================
+
+    found = 0;
+
+    for (i = 0; i < n; i++) {
+        if (A[i] == x) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("Linear Search: Element found at index %d\n", i);
+    else
+        printf("Linear Search: Element not found\n");
+
+
+    // =========================
+    // 2. Linear Search in Sorted Array
+    // =========================
+
+    found = 0;
+
+    for (i = 0; i < n; i++) {
+
+        if (A[i] == x) {
+            found = 1;
+            break;
+        }
+
+        if (A[i] > x) {
+            break;
+        }
+    }
+
+    if (found)
+        printf("Sorted Linear Search: Element found at index %d\n", i);
+    else
+        printf("Sorted Linear Search: Element not found\n");
+
+
+    // =========================
+    // 3. Binary Search
+    // =========================
+
+    int left = 0;
+    int right = n - 1;
+    int mid;
+
+    found = 0;
+
+    while (left <= right) {
+
+        mid = (left + right) / 2;
+
+        if (A[mid] == x) {
+            found = 1;
+            break;
+        }
+        else if (A[mid] < x) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    if (found)
+        printf("Binary Search: Element found at index %d\n", mid);
+    else
+        printf("Binary Search: Element not found\n");
+
+
+    return 0;
+}
